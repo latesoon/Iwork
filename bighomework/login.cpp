@@ -22,7 +22,7 @@ login::~login()
 void login::on_log_clicked()
 {
     if(ui->ad->isChecked()){
-        if(ui->getnum->text()=="2211290" && ui->getpwd->text()=="20040426"){
+        if(ui->getnum->text()=="10000" && ui->getpwd->text()=="10000"){
             this->hide();
             ad->show();
         }
@@ -52,6 +52,6 @@ void login::on_log_clicked()
 
 void login::on_help_clicked()
 {
-    QMessageBox::information(NULL,"预留admin账号","工号：2211290\n密码：20040426");
+    QMessageBox::information(NULL,"预留admin账号","工号：10000\n密码：10000");
 }
 
