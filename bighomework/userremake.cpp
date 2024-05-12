@@ -160,10 +160,14 @@ void userremake::on_xg_clicked()
             QMessageBox::critical(NULL,"错误","输入的技术职级不是数字！");
         }
         else{
+            QSqlQuery query;
+            query.prepare("DELETE FROM technicist WHERE employeeID = :value");
+            query.bindValue(":value", val);
+            query.exec();
             QSqlQuery query2;
-            query2.prepare("UPDATE technicist SET techlevel = :value1 WHERE employeeID = :value2");
-            query2.bindValue(":value1", val2);
-            query2.bindValue(":value2", val);
+            query2.prepare("INSERT INTO technicist (employeeID,techlevel) VALUES (:value1,:value2)");
+            query2.bindValue(":value1", val);
+            query2.bindValue(":value2", val2);
             if (!query2.exec()) {
                 QMessageBox::critical(NULL,"错误","用户技术职级修改失败！");
             }
@@ -183,10 +187,14 @@ void userremake::on_xg_clicked()
             QMessageBox::critical(NULL,"错误","输入的管理职级不是数字！");
         }
         else{
+            QSqlQuery query;
+            query.prepare("DELETE FROM management WHERE employeeID = :value");
+            query.bindValue(":value", val);
+            query.exec();
             QSqlQuery query2;
-            query2.prepare("UPDATE management SET managelevel = :value1 WHERE employeeID = :value2");
-            query2.bindValue(":value1", val2);
-            query2.bindValue(":value2", val);
+            query2.prepare("INSERT INTO management (employeeID,managelevel) VALUES (:value1,:value2)");
+            query2.bindValue(":value1", val);
+            query2.bindValue(":value2", val2);
             if (!query2.exec()) {
                 QMessageBox::critical(NULL,"错误","管理职级修改失败！");
             }
